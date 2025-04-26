@@ -32,7 +32,9 @@ def kmp_preprocessing(pattern):
 def knuth_morris_pratt_matcher(target, pattern):
 
     lps = kmp_preprocessing(pattern)
+    found_at = []
 
+    m = len(pattern)
     j = 0
     for i in range(len(target)):
         if pattern[j] != target[i]:
@@ -43,4 +45,10 @@ def knuth_morris_pratt_matcher(target, pattern):
         else:
             j += 1
             i += 1
+
+        if j == m:
+            found_at.append(i - m)
+            j = lps[j - 1]
+
+    return found_at
 
