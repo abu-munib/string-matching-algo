@@ -1,3 +1,0 @@
-def greetings():
-    return "Hello!"
-
